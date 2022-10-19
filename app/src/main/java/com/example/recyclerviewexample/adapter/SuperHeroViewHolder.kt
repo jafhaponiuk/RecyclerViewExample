@@ -6,7 +6,7 @@ import com.bumptech.glide.Glide
 import com.example.recyclerviewexample.SuperHero
 import com.example.recyclerviewexample.databinding.ItemSuperheroBinding
 
-class SuperHeroViewHolder(view:View):RecyclerView.ViewHolder(view) {
+class SuperHeroViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     val binding = ItemSuperheroBinding.bind(view)
 
@@ -15,7 +15,7 @@ class SuperHeroViewHolder(view:View):RecyclerView.ViewHolder(view) {
     //val publisher = view.findViewById<TextView>(R.id.tvPublisher)
     //val photo = view.findViewById<ImageView>(R.id.ivSuperHero)
 
-    fun render(superHeroModel: SuperHero) {
+    fun render(superHeroModel: SuperHero, onClickListener: (SuperHero) -> Unit) {
         //superHero.text = superHeroModel.superhero
         //realName.text = superHeroModel.realName
         //publisher.text = superHeroModel.publisher
@@ -25,5 +25,15 @@ class SuperHeroViewHolder(view:View):RecyclerView.ViewHolder(view) {
         binding.tvRealName.text = superHeroModel.realName
         binding.tvPublisher.text = superHeroModel.publisher
         Glide.with(binding.ivSuperHero.context).load(superHeroModel.photo).into(binding.ivSuperHero)
+
+        /* itemView.setOnClickListener {
+            Toast.makeText(
+                binding.ivSuperHero.context,
+                superHeroModel.superhero,
+                Toast.LENGTH_SHORT
+            ).show()
+        } */
+
+        itemView.setOnClickListener { onClickListener(superHeroModel) }
     }
 }
