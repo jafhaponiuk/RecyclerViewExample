@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         //recyclerView.adapter = SuperHeroAdapter(SuperHeroProvider.superHeroList)
 
         binding.recyclerSuperHero.layoutManager = manager
-        //2do param corresponde a una función lambda
+        //2do param corresponde a una lambda function
         binding.recyclerSuperHero.adapter = SuperHeroAdapter(
             SuperHeroProvider.superHeroList
         )
